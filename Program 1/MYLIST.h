@@ -21,7 +21,10 @@ public:
        }
        delete head;
    };
-    void insert (T item);
+    void insert (T item){
+        T node(item) brode;
+        head->brode;
+    };
     void remove(){
         if (head != nullptr){
         tmp = head;
