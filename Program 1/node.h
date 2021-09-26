@@ -7,12 +7,13 @@ class node {
   public:
   T data;
   node<T> * next; 
-  //node<T> * last; 
-  //node() { last = nullptr; next = nullptr;};
-  node() { next = nullptr;};
+  node<T> * last; 
+  node() { last = nullptr; next = nullptr;};
+  //node() { next = nullptr;};
   node(T item) {
       data = item;
       next = nullptr;
+      last = nullptr;
   }
 };
 #endif
