@@ -13,8 +13,8 @@ class myList {
     node<T> * head;
     node<T> * tmp;
     int size;                   
-    node<T> * charLoc[123] = {nullptr};         // only uses the last 26 slots, an array of pointers to nodes in the sorted link list
-    long int wordCount[123] = {0};              // keeps count of words of each starting letter
+    node<T> * charLoc[123] = {nullptr};                         // array of pointers to nodes in the sorted link list
+    long int wordCount[123] = {0};                              // keeps count of words of each starting letter
     public:                                     
     myList() { head = nullptr; size=0;} 
     ~myList(){
@@ -26,17 +26,17 @@ class myList {
         delete head;
     }
 
-        void Sinsert (T item){
-            if(item[0] != 0){                  
-                node<T> * newNode = new node<T>(item);  // declaring new node with given item
+        void Sinsert (T item){                                  ////// recieved help with theory of insert from Landon Francis (UVU) no help with code
+            if(item[0] != 0){                                   // if the string is not empty, then:           
+                node<T> * newNode = new node<T>(item);          // declare new node with given item
                 if(head == nullptr){
-                    head = newNode;                     // if list is empty, insert first
+                    head = newNode;                             // if list is empty, insert first
                 } else {
-                    node<T>* lastNode = head;           // declare a lastNode
-                    bool count = false;                 // ensure it lags behind tmp
-                    tmp = head;                         // start at the head for sort
+                    node<T>* lastNode = head;                   // declare a lastNode
+                    bool count = false;                         // ensure it lags behind tmp
+                    tmp = head;                                 // start at the head for sort
                     while(true){
-                        if (tmp->data[0] > newNode->data[0]){ // char compare instead of string compare!
+                        if (tmp->data[0] > newNode->data[0]){   // char compare instead of string compare!
                             newNode->next = tmp;
                             lastNode->next = newNode;
                             wordCount[newNode->data[0]]++;
@@ -53,29 +53,32 @@ class myList {
                             }
                             break;
                         }
-                        if (count == true) { // sets the lastNode behind tmp
+                        if (count == true) {                    // sets the lastNode behind tmp
                             lastNode = lastNode->next;
                         }
                         count = true;
-                        tmp = tmp->next; // iterate to next node
+                        tmp = tmp->next;                        // iterate to next node
                     }
                 }
                 size++;
             }
         }
 
-        /*bool find(T item){
-            if (charLoc[item] != nullptr) { // if linked list contains words of that letter
-                tmp = charLoc[item[0]];
-                for (int i = 0; i <= wordCount[item[0]]; i++){
-                    if(tmp->data){
-
-                    }
-                }
-
+        bool find(T item){
+            if (item[0] == 0){                                  // check if the given string is empty, return false
+                return false;
             }
-            return false;
-        }*/
+            if (charLoc[item[0]] != nullptr) {                  // if linked list contains words of that letter
+                tmp = charLoc[item[0]];
+                for (int i = 0; i <= wordCount[item[0]]; i++){  // only search for words of that letter
+                    if(tmp->data.compare(item) == 0){           // compare given word to selected in list
+                        return true;
+                    }
+                    tmp = tmp->next;                            // increment to next in list
+                }
+            }
+            return false;                                       // if nothing is found in subset, return false
+        }
 
         void removeFront(){
             if (head != nullptr){
@@ -97,8 +100,11 @@ class myList {
                 tmp = tmp->next;
             }
         }
+        bool isEmpty() {return size ==0;}
+        int getSize() {return size;}
 
-        void printHeaders() { // for testing ONLY
+        // Below function is used only for testing
+        void printHeaders() {                                   
             for (int i = 97; i <= 122; i++) {
                 if (charLoc[i] != nullptr) {
                     tmp = charLoc[i];
@@ -109,8 +115,5 @@ class myList {
                 }
             }
         }
-        
-        bool isEmpty() {return size ==0;}
-        int getSize() {return size;}
 };
 #endif
