@@ -8,21 +8,23 @@ int main(){
 
     myList<string> test;
 
-    test.insert("a");
-    test.insert("c");
-    test.insert("d");
-    test.insert("z");
-    test.insert("hhh");
-    test.insert("x");
-    test.insert("hhhhhh");
-    test.insert("h");
+    test.Sinsert(clean("A"));
+    test.Sinsert(clean("z"));
+    test.Sinsert(clean("c"));
+    test.Sinsert(clean("d"));
+    test.Sinsert(clean("zZz"));
+    test.Sinsert(clean("HhH"));
+    test.Sinsert(clean("x"));
+    test.Sinsert(clean("hHHxchhh"));
+    test.Sinsert(clean("Z"));
+    test.Sinsert(clean(""));
 
     std::cout << "size is: " << test.getSize() << std::endl;
     std::cout << "front is: " << test.front() << std::endl;
 
     std::cout << "List is: \n";
     test.print();
-    test.printCharLoc();
+    test.printHeaders();
 
     return 0;
 
