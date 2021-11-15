@@ -9,11 +9,11 @@ int main(){
     myList<string> test;
 
     test.Sinsert(clean("A"));
-    test.Sinsert(clean("z"));
+    test.Sinsert(clean("zZ"));
     test.Sinsert(clean("c"));
     test.Sinsert(clean("d"));
     test.Sinsert(clean("zZz"));
-    test.Sinsert(clean("HhH"));
+    test.Sinsert(clean("HHH"));
     test.Sinsert(clean("x"));
     test.Sinsert(clean("hHHxchhh"));
     test.Sinsert(clean("Z"));
